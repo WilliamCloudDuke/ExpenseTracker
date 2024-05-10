@@ -28,7 +28,7 @@ public class ExpenseService {
         Expense expense = mapFromDto(expenseDto);
         //Fetch the expense from the DB
         Expense savedExpense = expenseRepository.findById(expenseDto.getId())
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, String.format("cannot find expense by Id %s ", expense.getId())));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, String.format("cannot find expense by Id %s", expense.getId())));
         expenseRepository.save(updateExpense(savedExpense, expenseDto));
     }
 
@@ -47,7 +47,7 @@ public class ExpenseService {
 
     public void deleteExpense(String id) {
         //Fetch the Expense from the DB
-        Expense savedExpense = expenseRepository.findById(id).orElseThrow(() -> new ExpenseNotFoundException(String.format("cannot find expense by Id %s, id")));
+        Expense savedExpense = expenseRepository.findById(id).orElseThrow(() -> new ExpenseNotFoundException(String.format("cannot find expense by Id %s", id)));
         expenseRepository.deleteById(id);
     }
 
